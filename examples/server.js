@@ -6,9 +6,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const WebpackConfig = require('./webpack.config')
 
 const app = express()
-const router = express.Router()
-
 const compiler = webpack(WebpackConfig)
+const router = express.Router()
 
 app.use(
   webpackDevMiddleware(compiler, {
@@ -35,7 +34,6 @@ router.get('/simple/get', function(req, res) {
 
 app.use(router)
 const port = process.env.PORT || 8080
-
 module.exports = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`)
 })
